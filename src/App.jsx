@@ -9,7 +9,7 @@ function App() {
   const [inputValue, setInputValue] = useState('')
   const [hasError, setHasError] = useState(false)
 
-  useEffect( () => {
+  useEffect(() => {
     axios.get(`https://restcountries.com/v3.1/name/${inputValue || 'venezuela'}`)
       .then(res => {
         setcountry(res.data[0])
@@ -33,15 +33,18 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
-        <input id='input' type="text" />
-        <button>Search Country</button>
-      </form>
-    {
-      hasError
-      ? <ErrorFetch />
-      : <CardCountry country={country} />
-    }
 
+        <input id='input' type="text" placeholder=' Search Country' />
+
+        <button className='App__btn--search' ><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Emojione_1F50D.svg/1024px-Emojione_1F50D.svg.png' alt="iconSearch" /></button>
+      </form>
+      {
+        hasError
+          ? <ErrorFetch />
+          : <CardCountry country={country} />
+      }
+
+      <div className='App__background--map'></div>
     </div>
   )
 }

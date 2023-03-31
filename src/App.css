@@ -8,15 +8,18 @@ ul {
   padding: 0;
 }
 
-
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  min-height: 100vh;
+  background-image: url(./assets/image/universe.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 img {
@@ -24,9 +27,59 @@ img {
   user-select: none;
 }
 
-.content__cardCountry {
-  background-color: lightgray;
-  width: 410px;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.App__background--map {
+  background-image: url(./assets/image/map8.jpg);
+  background-size: cover;
+  border-radius: 50%;
+  width: 360px;
+  height: 360px;
+  margin-top: 5rem;
+  position: absolute;
+  z-index: -1;
+  box-shadow: -40px -40px 0 0 rgba(0, 0, 0, 10%) inset,
+    -100px -100px 100px 100px rgba(0, 0, 0, 40%) inset;
+  -webkit-animation: tierra-girando 75s infinite linear;
+}
+
+@-webkit-keyframes tierra-girando {
+  from {
+    background-position: left center;
+  }
+  to {
+    background-position: -992px center;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#input {
+  height: 2rem;
+}
+
+.App__btn--search {
+  border-radius: 0.5rem;
+  border-color: blue;
+}
+
+.App__btn--search img {
+  width: 20px;
+}
+
+.CardCountry {
+  background-color: rgba(211, 211, 211, 70%);
+  width: 300px;
   height: fit-content;
   padding: 1rem;
   display: flex;
@@ -36,21 +89,39 @@ img {
   border-radius: 1rem;
 }
 
-.cardCountry__name {
+.CardCountry__header {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
-.coatOfArms {
+.CardCountry__header--title {
+  font-size: 25px;
+  margin: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.CardCountry__header--coatOfArms {
   width: 60px;
+  margin-right: 1rem;
   user-select: none;
 }
 
-.cardCountry__info {
+.CardCountry__body--info {
   line-height: 1.4rem;
-  
+
 }
-.ErrorFetch__text {
-  color: white;
+
+.iconMap {
+  width: 20px;
+}
+
+@media (min-width: 500px) {
+  .App__background--map {
+    background-image: url(./assets/image/map5.jpg);
+    width: 497px;
+    height: 497px;
+  }
 }
