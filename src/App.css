@@ -12,10 +12,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-image: url(./assets/image/universe.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +41,7 @@ img {
   position: absolute;
   z-index: -1;
   box-shadow: -40px -40px 0 0 rgba(0, 0, 0, 10%) inset,
-    -100px -100px 100px 100px rgba(0, 0, 0, 40%) inset;
+    -100px -100px 100px 100px rgba(0, 0, 0, 20%) inset;
   -webkit-animation: tierra-girando 75s infinite linear;
 }
 
@@ -78,7 +74,7 @@ form {
 }
 
 .CardCountry {
-  background-color: rgba(211, 211, 211, 70%);
+  background-color: rgba(211, 211, 211, 50%);
   width: 300px;
   height: fit-content;
   padding: 1rem;
