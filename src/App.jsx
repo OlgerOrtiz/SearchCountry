@@ -25,18 +25,31 @@ function App() {
       })
   }, [inputValue])
 
+  useEffect(() => {
+    axios.get('https://restcountries.com/v3.1/all')
+    .then(res => {
+      setNamesCountry(res.data.map((data) => data.name.common))
+    
+
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])
+
   const handleSubmit = event => {
     event.preventDefault()
     setInputValue(event.target.input.value.trim())
     event.target.input.value = ''
   }
 
+  
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
 
-        <input id='input' type="text" placeholder=' Search Country' />
-
+        <input id='input' type="text" placeholder=' Search Country' autoComplete='off'/>
+        
         <button className='App__btn--search' >Search</button>
       </form>
       <div className='App__background--map'></div>
@@ -50,7 +63,6 @@ function App() {
         ? hasError
         : <Loading />
       }
-
     </div>
   )
 }
