@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import CardCountry from './components/CardCountry'
 import './App.css'
 import ErrorFetch from './components/ErrorFetch'
+import Loading from './components/Loading'
 
 function App() {
   const [country, setcountry] = useState()
@@ -36,15 +37,20 @@ function App() {
 
         <input id='input' type="text" placeholder=' Search Country' />
 
-        <button className='App__btn--search' ><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Emojione_1F50D.svg/1024px-Emojione_1F50D.svg.png' alt="iconSearch" /></button>
+        <button className='App__btn--search' >Search</button>
       </form>
+      <div className='App__background--map'></div>
       {
         hasError
           ? <ErrorFetch />
           : <CardCountry country={country} />
       }
+      {
+        country 
+        ? hasError
+        : <Loading />
+      }
 
-      <div className='App__background--map'></div>
     </div>
   )
 }
