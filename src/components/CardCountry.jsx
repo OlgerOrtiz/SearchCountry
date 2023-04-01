@@ -3,6 +3,7 @@
 const CardCountry = ({ country }) => {
   const population = new Intl.NumberFormat('es-MX').format(country?.population)
   return (
+    
     <article className="CardCountry">
       <img src={country?.flags.svg} alt={country?.flags.alt} />
       <section className="CardCountry__header">
