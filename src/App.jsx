@@ -4,6 +4,8 @@ import CardCountry from "./components/CardCountry";
 import "./App.css";
 import ErrorFetch from "./components/ErrorFetch";
 import Loading from "./components/Loading";
+import NavBar from "./components/NavBar";
+import 'boxicons'
 
 function App() {
   const [country, setcountry] = useState();
@@ -45,26 +47,17 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <form onSubmit={handleSearch}>
-        <input
-          id="input"
-          type="text"
-          placeholder=" Search Country"
-          autoComplete="off"
-          list="countries"
-        />
-        <datalist id="countries">
-          {countryNames.map((name, index) => (
-            <option key={index} value={name} />
-          ))}
-        </datalist>
-        <button className="App__btn--search">Search</button>
-      </form>
-      <div className="App__background--map"></div>
-      {hasError ? <ErrorFetch /> : <CardCountry country={country} />}
-      {country ? <Loading /> : null}
-    </div>
+    <article className="App">
+      <div className="App__navBar">
+        <NavBar countryNames={countryNames} handleSearch={handleSearch}/>
+      </div>
+      <div className="App__Map"></div>
+      {
+        hasError
+          ? <ErrorFetch />
+          : <CardCountry country={country} />
+      }
+    </article>
   );
 }
 

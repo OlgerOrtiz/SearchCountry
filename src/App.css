@@ -1,43 +1,50 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-img {
-  width: 100%;
-  user-select: none;
-}
-
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  margin-top: 70px;
 }
 
-.App__background--map {
+.App__navBar {
+  min-width: 100vw;
+  height: 50px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+
+.NavBar__Content {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem 0 1rem;
+}
+
+.NavBar__Input {
+  display: flex;
+  align-items: center;
+}
+
+#input {
+  background-color: inherit;
+  height: 2rem;
+  border-style: none;
+  border-radius: 0.5rem;
+
+}
+
+.App__Map {
   background-image: url(./assets/image/map2.jpg);
   background-size: cover;
   border-radius: 50%;
   width: 270px;
   height: 270px;
-  z-index: -1;
+  /* z-index: -1; */
 
   box-shadow: inset -13px -13px 65px rgba(6, 7, 56, 0.7),
     inset -45px -45px 100px rgba(7, 7, 54, 0.4)
@@ -47,28 +54,16 @@ img {
   -o-linear-gradient: (-45deg, rgba(255, 255, 220, .2) 0%, transparent 100%);
   -ms-linear-gradient: (-45deg, rgba(255, 255, 220, 0.2) 0%, transparent 100%);
 
-  -webkit-animation: rotate 90s infinite linear;
+  animation: rotate 150s infinite linear;
 }
 
-@-webkit-keyframes rotate {
+@keyframes rotate {
   from {
     background-position: left center;
   }
-
   to {
     background-position: -1078px center;
   }
-}
-
-#input {
-  height: 2rem;
-  margin-top: 2rem;
-}
-
-.App__btn--search {
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.1rem;
-  cursor: pointer;
 }
 
 .CardCountry {
@@ -82,7 +77,6 @@ img {
   text-align: left;
   border-radius: 1rem;
 }
-
 
 .CardCountry__header {
   display: flex;
@@ -109,10 +103,3 @@ img {
 
 }
 
-@media (min-width: 700px) {
-  .App__background--map {
-    background-image: url(./assets/image/map5.jpg);
-    width: 497px;
-    height: 497px;
-  }
-}
