@@ -1,54 +1,145 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 70px;
-}
-
-.App__navBar {
-  min-width: 100vw;
+.App__NavBar {
+  width: 100%;
   height: 50px;
-  background-color: white;
   position: fixed;
-  top: 0;
-  display: flex;
-  align-items: center;
+  background-color: #e6e6ee;
 }
 
 .NavBar__Content {
-  width: 100vw;
+  height: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 1rem;
   align-items: center;
-  padding: 0 1.5rem 0 1rem;
+  /* background-color: green; */
 }
 
-.NavBar__Input {
+.NavBar__Title {
+  display: none;
+}
+
+.NavBar__Content--Search { /*selectbox*/
+  height: 100%;
+  width: 220px;
+  /* background-color: blueviolet; */
+  background-color: transparent;
+  position: relative; 
+}
+
+.Select {
+  /* background-color: aqua; */
+  display: grid;
+  grid-template-columns: 90% 10%;
+  align-items: center;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, .16);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2S ease all;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.Select.active,
+.Select:hover {
+  background-color: #e6e6ee;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, .16);
+  border: 2px solid aquamarine;
+  color: gray;
+  fill: gray;
+}
+/* .Select.active > box-icon,
+.Select:hover > box-icon {
+  fill: aquamarine;
+} */
+
+.Select.active::before {
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  border-top: 10px solid aquamarine;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid transparent;
+  position: absolute;
+  bottom: -20px;
+  left: calc(50% - 10px);
+  /* z-index: 500; */
+}
+.Contenido__Select {
   display: flex;
   align-items: center;
+  /* background-color: bisque; */
+  /* background-color: transparent; */
+  padding: .5rem;
+  z-index: 200;
+}
+.Options {
+background-color: white;
+border-radius: 10px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0,.16);
+width: 100%;
+max-height: 400px;
+overflow: auto;
+z-index: 100;
+display: none;
 }
 
-#input {
-  background-color: inherit;
-  height: 2rem;
-  border-style: none;
-  border-radius: 0.5rem;
+.Options.active {
+  display: block;
+}
+.Option {
+  
+}
+.Content__Option{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: .2 ease all;
+  gap: .5rem;
+  padding: .3rem .5rem;
+}
+.Content__Option:hover{
+  background-color: aquamarine;
+}
+.Content__Option img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.Option__Title{
+font-size: small;
+/* font-weight: 100; */
+}
 
+
+.NavBar__Content--Icons {
+  display: flex;
+  gap: 0.5rem;
+  /* background-color: yellow */
+}
+.NavBar__Content--Icons box-icon {
+  width: 25px;
+  height: 25px;
+}
+.NavBar__Content--Icons box-icon:nth-child(2) {
+  width: 25px;
+  height: 25px;
+  display: none;
 }
 
 .App__Map {
+  display: inline-block;
   background-image: url(./assets/image/map2.jpg);
   background-size: cover;
   border-radius: 50%;
   width: 270px;
   height: 270px;
+  margin-top: calc(50px + 0.5rem);
   /* z-index: -1; */
 
   box-shadow: inset -13px -13px 65px rgba(6, 7, 56, 0.7),
-    inset -45px -45px 100px rgba(7, 7, 54, 0.4)
-  ;
+    inset -45px -45px 100px rgba(7, 7, 54, 0.4);
   -webkit-linear-gradient: (-45deg, rgba(255, 255, 220, .2) 0%, transparent 100%);
   -moz-linear-gradient: (-45deg, rgba(255, 255, 220, .2) 0%, transparent 100%);
   -o-linear-gradient: (-45deg, rgba(255, 255, 220, .2) 0%, transparent 100%);
@@ -61,45 +152,50 @@
   from {
     background-position: left center;
   }
+
   to {
     background-position: -1078px center;
   }
 }
 
-.CardCountry {
-  background-color: rgba(211, 211, 211, 50%);
+.App__Modal {
   width: 300px;
-  height: fit-content;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: left;
-  border-radius: 1rem;
+  height: min-content;
+  background-color: white;
 }
 
-.CardCountry__header {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+
+
+
+.App__Gallery {
+  max-width: 80%;
+  margin: 0 auto;
 }
 
-.CardCountry__header--title {
-  font-size: 25px;
-  margin: 0;
-  display: flex;
+.Gallery__Content {
+  width: 100%;
+  columns: 7 100px;
+  column-gap: .5em;
+  padding-top: 1rem;
+  gap: 1.2rem;
+}
+
+.Gallery__Content--Card {
+  display: inline-block;
   text-align: center;
-  align-items: center;
+  margin: .5rem;
+  padding-bottom: 1rem;
 }
 
-.CardCountry__header--coatOfArms {
-  width: 60px;
-  margin-right: 1rem;
-  user-select: none;
+.Gallery__Content--Card img {
+  width: 100%;
+  min-width: 100px;
+  margin-bottom: .5em;
+  display: block;
 }
 
-.CardCountry__body--info {
-  line-height: 1.4rem;
-
+.Gallery__Content--Card img:hover {
+  transition: transform 1s;
+  transform: scale3d(1.2, 1.2, 0.3);
+  cursor: pointer;
 }
-

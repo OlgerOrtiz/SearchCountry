@@ -34,7 +34,7 @@ const CardCountry = ({ country }) => {
             ? Object.values(country?.currencies)[0].symbol
             : ''}
         </li>
-        <li><b>Ubication-geografic: </b><a href={country?.maps.googleMaps}>GoogleMap</a></li>
+        <li><b>Ubication-geografic: </b><a href={country?.maps.openStreetMaps}>Map</a></li>
       </ul>
       
       </section>
